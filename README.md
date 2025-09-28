@@ -1,4 +1,4 @@
-# LA-BAJA-MOTIVACI-N-EN-CLASE
+# LA BAJA MOTIVACIÓN EN CLASE
 Página web educativa sobre la baja motivación en clases, con estrategias prácticas para docentes, estudiantes, familias e instituciones.
 
 Guía práctica sobre motivación estudiantil en el aula
