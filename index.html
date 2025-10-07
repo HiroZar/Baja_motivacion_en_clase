@@ -5,14 +5,14 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Baja motivación en clases — Guía práctica para educadores</title>
+  <title>Baja motivación en clases – Guía práctica para educadores</title>
   <link rel="icon" href="./image/icon.png" type="image/png">
   <meta name="description"
     content="Causas, consecuencias y estrategias efectivas para transformar la motivación estudiantil en el aula." />
   <link rel="icon" href="favicon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Baja motivación en clases — Guía práctica para educadores">
+  <meta property="og:title" content="Baja motivación en clases – Guía práctica para educadores">
   <meta property="og:description"
     content="Estrategias basadas en evidencia para docentes, estudiantes, familias e instituciones.">
   <meta property="og:type" content="website">
@@ -148,6 +148,41 @@
         display: none !important;
       }
     }
+
+    /* Responsive typography */
+    :root {
+      --step--1: clamp(0.78rem, 0.78rem + 0.1vw, 0.9rem);
+      --step-0: clamp(0.95rem, 0.9rem + 0.4vw, 1.05rem);
+      --step-1: clamp(1.15rem, 1.05rem + 0.7vw, 1.25rem);
+      --step-2: clamp(1.35rem, 1.2rem + 1vw, 1.6rem);
+      --step-3: clamp(1.7rem, 1.45rem + 1.5vw, 2.1rem);
+      --step-4: clamp(2rem, 1.75rem + 2vw, 2.6rem);
+    }
+
+    body {
+      font-size: var(--step-0);
+    }
+
+    h1 {
+      font-size: var(--step-4);
+    }
+
+    h2 {
+      font-size: var(--step-3);
+    }
+
+    h3 {
+      font-size: var(--step-2);
+    }
+
+    h4 {
+      font-size: var(--step-1);
+    }
+
+    /* Prevent sticky header overlap on anchor jump */
+    :target {
+      scroll-margin-top: 96px;
+    }
   </style>
 </head>
 
@@ -185,8 +220,35 @@
 
 
       </div>
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn"
+        class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus-ring"
+        aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú">
+        <svg id="iconOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="iconClose" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    </div>
+    <!-- Mobile panel -->
+    <div id="mobileMenu" class="md:hidden border-t border-slate-200/80 bg-white hidden" role="dialog"
+      aria-label="Navegación móvil">
+      <nav class="px-4 py-3 flex flex-col gap-1" aria-label="Navegación móvil">
+        <a href="#introduccion"
+          class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 focus-ring">Introducción</a>
+        <a href="#estrategias"
+          class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 focus-ring">Estrategias</a>
+        <a href="#autores"
+          class="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 focus-ring">Autoras</a>
+      </nav>
     </div>
   </header>
+
+  </div>
+
 
 
   <!-- Hero -->
@@ -272,7 +334,7 @@
             <!-- En móvil: SIN borde/blur y alto mínimo generoso -->
             <figure
               class="aspect-auto md:aspect-[4/3] w-full overflow-hidden rounded-none md:rounded-2xl bg-white/5 md:bg-white/10 md:backdrop-blur-sm border-0 md:border md:border-white/20 shadow-none md:shadow-2xl">
-              <img src="./image/portada.png" alt="Estudiantes motivados en clase"
+              <img decoding="async" loading="lazy" src="./image/portada.png" alt="Estudiantes motivados en clase"
                 class="block w-full h-auto md:h-full md:object-cover md:object-center"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px" />
             </figure>
@@ -289,407 +351,985 @@
   </section>
 
   <!-- Main -->
-<main id="contenido" class="mx-auto w-full max-w-7xl px-4 sm:px-6 py-10 sm:py-12">
-  <div class="grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-[minmax(240px,280px),1fr]">
-    <!-- TOC (oculto en móvil) -->
-    <aside id="toc" class="hidden lg:block lg:sticky lg:top-24 h-max">
-      <nav class="toc rounded-2xl bg-white ring-1 ring-slate-200 shadow-card p-6" aria-label="Índice de contenidos">
-        <div class="flex items-center gap-2 mb-4">
-          <div class="h-2 w-2 rounded-full bg-brand-500"></div>
-          <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Contenido</h3>
-        </div>
-        <ul class="space-y-1 text-sm">
-          <li><a href="#introduccion" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Introducción</a></li>
-          <li><a href="#que-es" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">¿Qué es la desmotivación?</a></li>
-          <li><a href="#causas" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Causas principales</a></li>
-          <li><a href="#consecuencias" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Consecuencias</a></li>
-          <li><a href="#estrategias" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Estrategias prácticas</a></li>
-          <li><a href="#conclusion" class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Conclusión</a></li>
-        </ul>
-        <div class="mt-6 pt-4 border-t border-slate-200">
-          <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
-            <span>Progreso</span><span id="reading-progress">0%</span>
+  <main id="contenido" class="mx-auto w-full max-w-7xl px-4 sm:px-6 py-10 sm:py-12">
+    <div class="grid gap-6 lg:gap-8 grid-cols-1 lg:grid-cols-[minmax(240px,280px),1fr]">
+      <!-- TOC (oculto en móvil) -->
+      <aside id="toc" class="hidden lg:block lg:sticky lg:top-24 h-max">
+        <nav class="toc rounded-2xl bg-white ring-1 ring-slate-200 shadow-card p-6" aria-label="Índice de contenidos">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="h-2 w-2 rounded-full bg-brand-500"></div>
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Contenido</h3>
           </div>
-          <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
-            <div id="progress-bar" class="h-full bg-brand-500 rounded-full transition-all duration-300" style="width:0%"></div>
-          </div>
-        </div>
-      </nav>
-    </aside>
-
-    <!-- Artículo -->
-    <article class="space-y-6 sm:space-y-8">
-      <!-- Introducción -->
-      <section id="introduccion" class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
-        <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors">
-            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div class="flex-1 w-full">
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-3 sm:mb-4">Introducción</h3>
-            <p class="text-slate-600 leading-relaxed">
-              La motivación es un factor clave en el proceso de aprendizaje. Sin embargo, muchos estudiantes presentan baja motivación en clases, lo que impacta en su rendimiento académico, participación y desarrollo personal. Reconocer este problema es el primer paso para buscar soluciones efectivas.
-            </p>
-            <figure class="mt-4">
-              <img src="./image/introduccion.png" alt="Estudiantes participando en clase"
-                   class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- ¿Qué es? -->
-      <section id="que-es" class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
-        <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
-          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-100 transition-colors">
-            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-          </div>
-          <div class="flex-1 w-full">
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-3 sm:mb-4">¿Qué es la baja motivación en clases?</h3>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              La baja motivación en clases se refiere a la falta de interés, energía o disposición para aprender, participar o cumplir con las actividades escolares. Puede expresarse en actitudes como:
-            </p>
-            <ul class="space-y-2 text-slate-600 pb-4">
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Distracción constante.</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Poco esfuerzo en las tareas.</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Escasa participación en clase.</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Ausentismo o apatía general.</li>
-            </ul>
-            <figure class="mt-4">
-              <img src="./image/manifestaciones.png" alt="Manifestaciones de la desmotivación"
-                   class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- Causas -->
-      <section id="causas" class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
-        <div class="flex items-start gap-4 sm:gap-5 mb-4 sm:mb-6">
-          <div class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600 group-hover:bg-purple-100 transition-colors">
-            <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-2 sm:mb-4">Causas principales</h3>
-            <p class="text-slate-600">Cuatro frentes se combinan. Conocerlos ayuda a intervenir con puntería.</p>
-          </div>
-        </div>
-
-        <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
-          <!-- 1 -->
-          <div class="rounded-xl border border-slate-200 p-5 hover:border-blue-200 hover:bg-blue-25 transition-all">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="h-9 w-9 rounded-lg bg-blue-100 grid place-items-center">
-                <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h4 class="font-bold text-slate-900">1. Factores personales</h4>
+          <ul class="space-y-1 text-sm">
+            <li><a href="#introduccion"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Introducción</a>
+            </li>
+            <li><a href="#que-es"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">¿Qué
+                es la desmotivación?</a></li>
+            <li><a href="#causas"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Causas
+                principales</a></li>
+            <li><a href="#consecuencias"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Consecuencias</a>
+            </li>
+            <li><a href="#estrategias"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Estrategias
+                prácticas</a></li>
+            <li><a href="#implementacion"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Implementación</a>
+            </li>
+            <li><a href="#conclusion"
+                class="block rounded-lg px-3 py-2.5 hover:bg-brand-100 text-slate-700 transition-colors focus-ring">Conclusión</a>
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-slate-200">
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span>Progreso</span><span id="reading-progress">0%</span>
             </div>
-            <ul class="space-y-2 text-slate-600">
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Ausencia de hábitos de estudio</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Baja autoeficacia/autoestima</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Fatiga física/mental</li>
-            </ul>
-          </div>
-
-          <!-- 2 -->
-          <div class="rounded-xl border border-slate-200 p-5 hover:border-emerald-200 hover:bg-emerald-25 transition-all">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="h-9 w-9 rounded-lg bg-emerald-100 grid place-items-center">
-                <svg class="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </div>
-              <h4 class="font-bold text-slate-900">2. Factores familiares</h4>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div id="progress-bar" class="h-full bg-brand-500 rounded-full transition-all duration-300"
+                style="width:0%"></div>
             </div>
-            <ul class="space-y-2 text-slate-600">
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Poco acompañamiento en casa</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Comunicación limitada</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Expectativas poco realistas</li>
-            </ul>
           </div>
+        </nav>
+      </aside>
 
-          <!-- 3 -->
-          <div class="rounded-xl border border-slate-200 p-5 hover:border-amber-200 hover:bg-amber-25 transition-all">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="h-9 w-9 rounded-lg bg-amber-100 grid place-items-center">
-                <svg class="h-5 w-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h4 class="font-bold text-slate-900">3. Factores escolares</h4>
+      <!-- Artículo -->
+      <article class="space-y-6 sm:space-y-8">
+        <!-- Introducción -->
+        <section id="introduccion"
+          class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
+          <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+            <div
+              class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-            <ul class="space-y-2 text-slate-600">
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Metodologías poco activas</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Sobrecarga de tareas</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Pocas dinámicas motivadoras</li>
-            </ul>
-          </div>
-
-          <!-- 4 -->
-          <div class="rounded-xl border border-slate-200 p-5 hover:border-rose-200 hover:bg-rose-25 transition-all">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="h-9 w-9 rounded-lg bg-rose-100 grid place-items-center">
-                <svg class="h-5 w-5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h4 class="font-bold text-slate-900">4. Factores sociales</h4>
+            <div class="flex-1 w-full">
+              <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-3 sm:mb-4">Introducción</h3>
+              <p class="text-slate-600 leading-relaxed">
+                La motivación es un factor clave en el proceso de aprendizaje. Sin embargo, muchos estudiantes presentan
+                baja motivación en clases, lo que impacta en su rendimiento académico, participación y desarrollo
+                personal. Reconocer este problema es el primer paso para buscar soluciones efectivas.
+              </p>
+              <figure class="mt-4">
+                <img decoding="async" loading="lazy" src="./image/introduccion.png"
+                  alt="Estudiantes participando en clase"
+                  class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
+              </figure>
             </div>
-            <ul class="space-y-2 text-slate-600">
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Uso excesivo de pantallas</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Problemas emocionales/convivencia</li>
-              <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Comparación y presión social</li>
-            </ul>
           </div>
-        </div>
+        </section>
 
-        <!-- Diagrama responsive -->
-        <figure class="mt-6 sm:mt-8 w-full overflow-hidden rounded-xl">
-          <img src="./image/diagrama-causas.png" alt="Diagrama de interrelación"
-               class="w-full max-w-full h-auto block ring-1 ring-slate-200 shadow mx-auto" />
-        </figure>
-      </section>
-
-      <!-- Consecuencias -->
-      <section id="consecuencias" class="group rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
-        <div class="flex items-start gap-4">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600 group-hover:bg-red-100 transition-colors">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.864-.833-2.634 0L4.232 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
+        <!-- ¿Qué es? -->
+        <section id="que-es"
+          class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
+          <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+            <div
+              class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-100 transition-colors">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <div class="flex-1 w-full">
+              <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-3 sm:mb-4">¿Qué es la baja
+                motivación en clases?</h3>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                La baja motivación en clases se refiere a la falta de interés, energía o disposición para aprender,
+                participar o cumplir con las actividades escolares. Puede expresarse en actitudes como:
+              </p>
+              <ul class="space-y-2 text-slate-600 pb-4">
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Distracción constante.</li>
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Poco
+                  esfuerzo en las tareas.</li>
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Escasa
+                  participación en clase.</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Ausentismo o apatía general.</li>
+              </ul>
+              <figure class="mt-4">
+                <img decoding="async" loading="lazy" src="./image/manifestaciones.png"
+                  alt="Manifestaciones de la desmotivación"
+                  class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
+              </figure>
+            </div>
           </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-4">Consecuencias de la desmotivación</h3>
-            <p class="text-slate-600 leading-relaxed mb-6">
-              El efecto dominó pega en calificaciones, conducta y desarrollo personal. Mientras antes se intervenga, menos cuesta.
-            </p>
+        </section>
 
-            <div class="grid gap-4 sm:grid-cols-2 mb-6">
-              <div class="p-4 rounded-xl bg-red-50 border border-red-100">
-                <div class="flex items-center gap-3 mb-2">
-                  <svg class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+        <!-- Causas -->
+        <section id="causas"
+          class="group rounded-2xl bg-white p-5 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
+          <div class="flex items-start gap-4 sm:gap-5 mb-4 sm:mb-6">
+            <div
+              class="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600 group-hover:bg-purple-100 transition-colors">
+              <svg class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 mb-2 sm:mb-4">Causas principales
+              </h3>
+              <p class="text-slate-600">Cuatro frentes se combinan. Conocerlos ayuda a intervenir con puntería.</p>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
+            <!-- 1 -->
+            <div class="rounded-xl border border-slate-200 p-5 hover:border-blue-200 hover:bg-blue-25 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-9 w-9 rounded-lg bg-blue-100 grid place-items-center">
+                  <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  <span class="font-semibold text-red-900">Rendimiento</span>
                 </div>
-                <p class="text-sm text-red-700">Baja de calificaciones y logros.</p>
+                <h4 class="font-bold text-slate-900">1. Factores personales</h4>
               </div>
-
-              <div class="p-4 rounded-xl bg-orange-50 border border-orange-100">
-                <div class="flex items-center gap-3 mb-2">
-                  <svg class="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span class="font-semibold text-orange-900">Desinterés</span>
-                </div>
-                <p class="text-sm text-orange-700">Pérdida de curiosidad por aprender.</p>
-              </div>
-
-              <div class="p-4 rounded-xl bg-yellow-50 border border-yellow-100">
-                <div class="flex items-center gap-3 mb-2">
-                  <svg class="h-5 w-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span class="font-semibold text-yellow-900">Disciplina</span>
-                </div>
-                <p class="text-sm text-yellow-700">Más conflictos y conductas disruptivas.</p>
-              </div>
-
-              <div class="p-4 rounded-xl bg-purple-50 border border-purple-100">
-                <div class="flex items-center gap-3 mb-2">
-                  <svg class="h-5 w-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span class="font-semibold text-purple-900">Desarrollo</span>
-                </div>
-                <p class="text-sm text-purple-700">Menos habilidades y potencial desaprovechado.</p>
-              </div>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Ausencia de hábitos de estudio</li>
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Baja
+                  autoeficacia/autoestima</li>
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-blue-400"></span>Fatiga
+                  física/mental</li>
+              </ul>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-              <p class="text-sm text-slate-600"><strong>Impacto a largo plazo:</strong> autoestima, oportunidades y competencias para la vida se ven afectadas si no se actúa.</p>
+            <!-- 2 -->
+            <div
+              class="rounded-xl border border-slate-200 p-5 hover:border-emerald-200 hover:bg-emerald-25 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-9 w-9 rounded-lg bg-emerald-100 grid place-items-center">
+                  <svg class="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+                <h4 class="font-bold text-slate-900">2. Factores familiares</h4>
+              </div>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Poco acompañamiento en casa</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Comunicación limitada</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Expectativas poco realistas</li>
+              </ul>
+            </div>
+
+            <!-- 3 -->
+            <div class="rounded-xl border border-slate-200 p-5 hover:border-amber-200 hover:bg-amber-25 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-9 w-9 rounded-lg bg-amber-100 grid place-items-center">
+                  <svg class="h-5 w-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h4 class="font-bold text-slate-900">3. Factores escolares</h4>
+              </div>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Metodologías poco activas</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Sobrecarga de tareas</li>
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400"></span>Pocas
+                  dinámicas motivadoras</li>
+              </ul>
+            </div>
+
+            <!-- 4 -->
+            <div class="rounded-xl border border-slate-200 p-5 hover:border-rose-200 hover:bg-rose-25 transition-all">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="h-9 w-9 rounded-lg bg-rose-100 grid place-items-center">
+                  <svg class="h-5 w-5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h4 class="font-bold text-slate-900">4. Factores sociales</h4>
+              </div>
+              <ul class="space-y-2 text-slate-600">
+                <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Uso
+                  excesivo de pantallas</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Problemas emocionales/convivencia</li>
+                <li class="flex items-start gap-2"><span
+                    class="mt-2 h-1.5 w-1.5 rounded-full bg-rose-400"></span>Comparación y presión social</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Estrategias -->
-      <section id="estrategias" class="group rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
-        <div class="flex items-start gap-4 mb-6">
-          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors">
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-2">Estrategias prácticas</h3>
-            <p class="text-slate-600">Aplicables por docentes, familias y estudiantes. Concretas, medibles y baratas.</p>
-          </div>
-        </div>
+          <!-- Diagrama responsive -->
+          <figure class="mt-6 sm:mt-8 w-full overflow-hidden rounded-xl">
+            <img decoding="async" loading="lazy" src="./image/diagrama-causas.png" alt="Diagrama de interrelación"
+              class="w-full max-w-full h-auto block ring-1 ring-slate-200 shadow mx-auto" />
+          </figure>
+        </section>
 
-        <!-- Estrategias (Hero Slider) — 4 slides -->
-        <section id="estrategias-slider" class="reveal">
-          <div id="estrategiasSlider"
-               class="relative overflow-hidden rounded-2xl ring-1 ring-slate-200 shadow-card bg-transparent"
-               aria-roledescription="carousel" aria-label="Estrategias prácticas">
-
-            <!-- Track -->
-            <div class="flex transition-transform duration-700 ease-out" data-track>
-              <!-- 1) Docentes -->
-              <article class="w-full shrink-0">
-                <div class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600">
-                  <div>
-                    <div class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">Docentes</div>
-                    <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Metodologías activas y significado</h3>
-                    <p class="mt-3 text-white/90">Más acción, menos monólogo. Evalúa y celebra avances, y aterriza los temas a la vida real.</p>
-                    <ul class="mt-4 space-y-2 text-white/90">
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>ABP, gamificación y trabajo en equipo</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>Reconocer y valorar logros</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>Conectar con la vida cotidiana</li>
-                    </ul>
-                  </div>
-                  <figure class="order-first md:order-none">
-                    <img src="./image/docentes-metodologias.png" alt="Docente aplicando metodologías activas"
-                         class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
-                  </figure>
-                </div>
-              </article>
-
-              <!-- 2) Estudiantes -->
-              <article class="w-full shrink-0">
-                <div class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-600">
-                  <div>
-                    <div class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">Estudiantes</div>
-                    <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Metas, hábitos y pedir ayuda</h3>
-                    <p class="mt-3 text-white/90">Plan corto, constancia y cero miedo a preguntar. Así de simple.</p>
-                    <ul class="mt-4 space-y-2 text-white/90">
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Establecer metas personales</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Desarrollar hábitos de estudio</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Buscar ayuda cuando sea necesario</li>
-                    </ul>
-                  </div>
-                  <figure class="order-first md:order-none">
-                    <img src="./image/estudiantes-habitos.png" alt="Estudiantes planificando y pidiendo ayuda"
-                         class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
-                  </figure>
-                </div>
-              </article>
-
-              <!-- 3) Familias -->
-              <article class="w-full shrink-0">
-                <div class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-emerald-900 via-emerald-700 to-emerald-600">
-                  <div>
-                    <div class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">Familias</div>
-                    <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Acompañamiento que suma</h3>
-                    <p class="mt-3 text-white/90">Hogar que apoya, escucha y refuerza: el combo que sostiene el hábito.</p>
-                    <ul class="mt-4 space-y-2 text-white/90">
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Crear un ambiente de apoyo en casa</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Escuchar y acompañar</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Reforzar la importancia de la educación</li>
-                    </ul>
-                  </div>
-                  <figure class="order-first md:order-none">
-                    <img src="./image/familia-tareas.png" alt="Familia acompañando las tareas"
-                         class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
-                  </figure>
-                </div>
-              </article>
-
-              <!-- 4) Institución -->
-              <article class="w-full shrink-0">
-                <div class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-violet-900 via-violet-700 to-violet-600">
-                  <div>
-                    <div class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">Institución</div>
-                    <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Ecosistema que motiva</h3>
-                    <p class="mt-3 text-white/90">Estructuras que acompañan: tutores, diálogo y experiencias fuera del aula.</p>
-                    <ul class="mt-4 space-y-2 text-white/90">
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Tutorías y mentorías</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Espacios de diálogo y participación</li>
-                      <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Actividades extracurriculares motivadoras</li>
-                    </ul>
-                  </div>
-                  <figure class="order-first md:order-none">
-                    <img src="./image/actividades-extracurriculares.png" alt="Actividades y mentorías institucionales"
-                         class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
-                  </figure>
-                </div>
-              </article>
+        <!-- Consecuencias -->
+        <section id="consecuencias"
+          class="group rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
+          <div class="flex items-start gap-4">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-xl bg-red-50 text-red-600 group-hover:bg-red-100 transition-colors">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.864-.833-2.634 0L4.232 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
             </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-4">Consecuencias de la desmotivación</h3>
+              <p class="text-slate-600 leading-relaxed mb-6">
+                El efecto dominó pega en calificaciones, conducta y desarrollo personal. Mientras antes se intervenga,
+                menos cuesta.
+              </p>
 
-            <!-- Indicadores (4) -->
-            <div class="absolute inset-x-0 top-3 flex justify-center">
-              <div class="flex items-center gap-2 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1" role="tablist" aria-label="Indicadores de estrategia">
-                <button class="h-2.5 w-2.5 rounded-full bg-white/50 data-[active=true]:bg-white" data-dot="0" role="tab" aria-selected="true"></button>
-                <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="1" role="tab" aria-selected="false"></button>
-                <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="2" role="tab" aria-selected="false"></button>
-                <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="3" role="tab" aria-selected="false"></button>
+              <div class="grid gap-4 sm:grid-cols-2 mb-6">
+                <div class="p-4 rounded-xl bg-red-50 border border-red-100">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                    </svg>
+                    <span class="font-semibold text-red-900">Rendimiento</span>
+                  </div>
+                  <p class="text-sm text-red-700">Baja de calificaciones y logros.</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-orange-50 border border-orange-100">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span class="font-semibold text-orange-900">Desinterés</span>
+                  </div>
+                  <p class="text-sm text-orange-700">Pérdida de curiosidad por aprender.</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-yellow-50 border border-yellow-100">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="h-5 w-5 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="font-semibold text-yellow-900">Disciplina</span>
+                  </div>
+                  <p class="text-sm text-yellow-700">Más conflictos y conductas disruptivas.</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-purple-50 border border-purple-100">
+                  <div class="flex items-center gap-3 mb-2">
+                    <svg class="h-5 w-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="font-semibold text-purple-900">Desarrollo</span>
+                  </div>
+                  <p class="text-sm text-purple-700">Menos habilidades y potencial desaprovechado.</p>
+                </div>
               </div>
-            </div>
 
-            <!-- Flechas md+ -->
-            <div class="pointer-events-none absolute inset-y-0 left-0 right-0 hidden sm:flex justify-between items-center px-2">
-              <button class="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white ring-1 ring-white/20 hover:bg-black/40 focus:outline-none focus:ring-4 focus:ring-white/30" aria-label="Anterior" data-prev>
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-              </button>
-              <button class="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white ring-1 ring-white/20 hover:bg-black/40 focus:outline-none focus:ring-4 focus:ring-white/30" aria-label="Siguiente" data-next>
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-              </button>
-            </div>
-
-            <!-- Progreso -->
-            <div class="absolute bottom-0 left-0 right-0">
-              <div class="mx-6 mb-4 h-1.5 overflow-hidden rounded-full bg-white/20">
-                <div data-progress class="h-full w-0 rounded-full bg-white transition-[width] ease-linear"></div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <p class="text-sm text-slate-600"><strong>Impacto a largo plazo:</strong> autoestima, oportunidades y
+                  competencias para la vida se ven afectadas si no se actúa.</p>
               </div>
             </div>
           </div>
         </section>
-      </section>
 
-      <!-- Conclusión -->
-      <section id="conclusion" class="reveal rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card">
-        <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-3">Conclusión</h3>
-        <p class="text-slate-600">
-          La baja motivación en clases no es un problema sin solución. Con la participación conjunta de docentes, estudiantes, familias e instituciones, es posible transformar el aprendizaje en una experiencia significativa y motivadora.
-        </p>
-        <figure class="mt-4">
-          <img src="./image/CONCLUSION.png" alt="Manifestaciones de la desmotivación"
-               class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
-        </figure>
-      </section>
+        <!-- Estrategias -->
+        <section id="estrategias"
+          class="group rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card hover:shadow-card-hover transition-all duration-300 reveal">
+          <div class="flex items-start gap-4 mb-6">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 group-hover:bg-brand-100 transition-colors">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-2">Estrategias prácticas</h3>
+              <p class="text-slate-600">Aplicables por docentes, familias y estudiantes. Concretas, medibles y baratas.
+              </p>
+            </div>
+          </div>
 
-      <!-- Autoras -->
-      <section id="autores" class="reveal rounded-2xl bg-gradient-to-r from-brand-700 to-brand-600 p-6 text-white shadow-card">
-        <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-          <div>
-            <h3 class="text-lg font-semibold tracking-tight">Autoras</h3>
-            <div class="flex flex-wrap gap-5">
-              <div class="flex items-center gap-3 border-b border-slate-200/30 pt-3">
-                <div>
-                  <p class="font-medium text-white">Damaris Nicol Vásquez Carlos</p>
+          <!-- Estrategias (Hero Slider) – 4 slides -->
+          <section id="estrategias-slider" class="reveal">
+            <div id="estrategiasSlider"
+              class="relative overflow-hidden rounded-2xl ring-1 ring-slate-200 shadow-card bg-transparent"
+              aria-roledescription="carousel" aria-label="Estrategias prácticas">
+
+              <!-- Track -->
+              <div class="flex transition-transform duration-700 ease-out" data-track>
+                <!-- 1) Docentes -->
+                <article class="w-full shrink-0">
+                  <div
+                    class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600">
+                    <div>
+                      <div
+                        class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                        Docentes</div>
+                      <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Metodologías activas y significado
+                      </h3>
+                      <p class="mt-3 text-white/90">Más acción, menos monólogo. Evalúa y celebra avances, y aterriza los
+                        temas a la vida real.</p>
+                      <ul class="mt-4 space-y-2 text-white/90">
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>ABP,
+                          gamificación y trabajo en equipo</li>
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>Reconocer y valorar logros</li>
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-yellow-300"></span>Conectar
+                          con la vida cotidiana</li>
+                      </ul>
+                    </div>
+                    <figure class="order-first md:order-none">
+                      <img decoding="async" loading="lazy" src="./image/docentes-metodologias.png"
+                        alt="Docente aplicando metodologías activas"
+                        class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
+                    </figure>
+                  </div>
+                </article>
+
+                <!-- 2) Estudiantes -->
+                <article class="w-full shrink-0">
+                  <div
+                    class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-600">
+                    <div>
+                      <div
+                        class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                        Estudiantes</div>
+                      <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Metas, hábitos y pedir ayuda</h3>
+                      <p class="mt-3 text-white/90">Plan corto, constancia y cero miedo a preguntar. Así de simple.</p>
+                      <ul class="mt-4 space-y-2 text-white/90">
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Establecer metas personales</li>
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Desarrollar hábitos de estudio
+                        </li>
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-200"></span>Buscar
+                          ayuda cuando sea necesario</li>
+                      </ul>
+                    </div>
+                    <figure class="order-first md:order-none">
+                      <img decoding="async" loading="lazy" src="./image/estudiantes-habitos.png"
+                        alt="Estudiantes planificando y pidiendo ayuda"
+                        class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
+                    </figure>
+                  </div>
+                </article>
+
+                <!-- 3) Familias -->
+                <article class="w-full shrink-0">
+                  <div
+                    class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-emerald-900 via-emerald-700 to-emerald-600">
+                    <div>
+                      <div
+                        class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                        Familias</div>
+                      <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Acompañamiento que suma</h3>
+                      <p class="mt-3 text-white/90">Hogar que apoya, escucha y refuerza: el combo que sostiene el
+                        hábito.</p>
+                      <ul class="mt-4 space-y-2 text-white/90">
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Crear
+                          un ambiente de apoyo en casa</li>
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Escuchar y acompañar</li>
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-200"></span>Reforzar la importancia de la
+                          educación</li>
+                      </ul>
+                    </div>
+                    <figure class="order-first md:order-none">
+                      <img decoding="async" loading="lazy" src="./image/familia-tareas.png"
+                        alt="Familia acompañando las tareas"
+                        class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
+                    </figure>
+                  </div>
+                </article>
+
+                <!-- 4) Institución -->
+                <article class="w-full shrink-0">
+                  <div
+                    class="min-h-[360px] md:min-h-[420px] grid md:grid-cols-2 items-center gap-6 md:gap-10 p-6 sm:p-8 lg:p-12 text-white bg-gradient-to-br from-violet-900 via-violet-700 to-violet-600">
+                    <div>
+                      <div
+                        class="inline-flex items-center rounded-full bg-white/15 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                        Institución</div>
+                      <h3 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">Ecosistema que motiva</h3>
+                      <p class="mt-3 text-white/90">Estructuras que acompañan: tutores, diálogo y experiencias fuera del
+                        aula.</p>
+                      <ul class="mt-4 space-y-2 text-white/90">
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Tutorías
+                          y mentorías</li>
+                        <li class="flex gap-3"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Espacios
+                          de diálogo y participación</li>
+                        <li class="flex gap-3"><span
+                            class="mt-2 h-1.5 w-1.5 rounded-full bg-violet-200"></span>Actividades extracurriculares
+                          motivadoras</li>
+                      </ul>
+                    </div>
+                    <figure class="order-first md:order-none">
+                      <img decoding="async" loading="lazy" src="./image/actividades-extracurriculares.png"
+                        alt="Actividades y mentorías institucionales"
+                        class="w-full h-auto object-cover rounded-xl ring-1 ring-white/20 shadow-2xl">
+                    </figure>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Indicadores (4) -->
+              <div class="absolute inset-x-0 top-3 flex justify-center">
+                <div class="flex items-center gap-2 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1" role="tablist"
+                  aria-label="Indicadores de estrategia">
+                  <button class="h-2.5 w-2.5 rounded-full bg-white/50 data-[active=true]:bg-white" data-dot="0"
+                    role="tab" aria-selected="true"></button>
+                  <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="1"
+                    role="tab" aria-selected="false"></button>
+                  <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="2"
+                    role="tab" aria-selected="false"></button>
+                  <button class="h-2.5 w-2.5 rounded-full bg-white/40 data-[active=true]:bg-white" data-dot="3"
+                    role="tab" aria-selected="false"></button>
                 </div>
               </div>
-              <div class="flex items-center gap-3 border-b border-slate-200/30 pt-3">
-                <div>
-                  <p class="font-medium text-white">Mayra Rubí Ruiz Garrido</p>
+
+              <!-- Flechas md+ -->
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 right-0 hidden sm:flex justify-between items-center px-2">
+                <button
+                  class="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white ring-1 ring-white/20 hover:bg-black/40 focus:outline-none focus:ring-4 focus:ring-white/30"
+                  aria-label="Anterior" data-prev>
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  class="pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/30 text-white ring-1 ring-white/20 hover:bg-black/40 focus:outline-none focus:ring-4 focus:ring-white/30"
+                  aria-label="Siguiente" data-next>
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Progreso -->
+              <div class="absolute bottom-0 left-0 right-0">
+                <div class="mx-6 mb-4 h-1.5 overflow-hidden rounded-full bg-white/20">
+                  <div data-progress class="h-full w-0 rounded-full bg-white transition-[width] ease-linear"></div>
                 </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+
+
+
+
+
+
+
+
+<section id="implementacion">
+<!-- CONTENIDO EN SECCIONES (sin slider) -->
+<div class="space-y-8 p-4">
+
+  <!-- FASE CREACIÓN: DESIGN THINKING -->
+  <section aria-labelledby="dt-title" class="rounded-3xl bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-8 shadow-xl border-2 border-purple-200">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-4xl">🎨</span>
+      <div>
+        <h4 id="dt-title" class="text-2xl font-bold text-purple-900">Fase creación: Design Thinking</h4>
+        <p class="text-purple-700 font-medium">Cinco pasos, cero drama: entendemos el problema, pensamos soluciones y probamos rápido.</p>
+      </div>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 mt-6">
+      <!-- Empatizar -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-l-4 border-pink-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-3xl">💝</span>
+          <h5 class="font-bold text-lg text-slate-900">Fase Empatizar</h5>
+        </div>
+        <p class="text-slate-700 mb-3 font-medium">Escucha activa: ¿qué aburre, qué cuesta, qué motiva? (5–10 min, anónimo mejor).</p>
+        <div class="bg-pink-50 rounded-xl p-4 border border-pink-200">
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-pink-500">✓</span>
+              <span>Mini-encuesta 1–5: interés, utilidad, autoeficacia, voz, ganas.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-pink-500">✓</span>
+              <span>Preguntas de salida: "lo más difícil" / "qué cambiar".</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Definir -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-l-4 border-blue-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-3xl">🎯</span>
+          <h5 class="font-bold text-lg text-slate-900">Fase Definir</h5>
+        </div>
+        <p class="text-slate-700 mb-3 font-medium">Causa raíz (no el síntoma). En una línea.</p>
+        <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-4 border-2 border-blue-200">
+          <p class="text-sm text-slate-800 italic">
+            <span class="font-semibold">Ej.:</span> "La motivación baja porque no ven <em class="text-blue-600 font-bold">para qué</em> sirve; falta conexión con su vida diaria".
+          </p>
+        </div>
+      </article>
+
+      <!-- Idear -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-l-4 border-yellow-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-3xl">💡</span>
+          <h5 class="font-bold text-lg text-slate-900">Fase Idear</h5>
+        </div>
+        <p class="text-slate-700 mb-3 font-medium">6 ideas rápidas (2 min c/u). Luego votamos 2 por impacto y costo.</p>
+        <div class="bg-yellow-50 rounded-xl p-4 border border-yellow-200">
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-600">⚡</span>
+              <span>Retos de 10' en parejas con badge.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-600">⚡</span>
+              <span>Mini-proyecto con datos del barrio.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-600">⚡</span>
+              <span>Roles rotativos (vocera, timekeeper, reportera).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-yellow-600">⚡</span>
+              <span>Ticket de salida (1 pregunta potente).</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Prototipar -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-l-4 border-green-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-3xl">🛠️</span>
+          <h5 class="font-bold text-lg text-slate-900">Fase Prototipar</h5>
+        </div>
+        <p class="text-slate-700 mb-3 font-medium">Arma una sesión piloto (40 min) con producto visible.</p>
+        <div class="bg-green-50 rounded-xl p-4 border border-green-200 space-y-3">
+          <div class="flex gap-2">
+            <span class="bg-green-500 text-white px-3 py-1 rounded-lg font-bold text-xs">Inicio 5'</span>
+            <p class="text-sm text-slate-700">Meta del día + regla de participación.</p>
+          </div>
+          <div class="flex gap-2">
+            <span class="bg-green-600 text-white px-3 py-1 rounded-lg font-bold text-xs">Actividad 25'</span>
+            <p class="text-sm text-slate-700">Reto guiado con evidencia (foto/cartel).</p>
+          </div>
+          <div class="flex gap-2">
+            <span class="bg-green-700 text-white px-3 py-1 rounded-lg font-bold text-xs">Cierre 10'</span>
+            <p class="text-sm text-slate-700">Ticket de salida + aplauso de logro.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Evaluar -->
+      <article class="md:col-span-2 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-l-4 border-purple-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-3xl">📊</span>
+          <h5 class="font-bold text-lg text-slate-900">Fase Evaluar</h5>
+        </div>
+        <p class="text-slate-700 mb-4 font-medium">Rúbrica flash (1–4) + comparación con línea base.</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-purple-50 rounded-xl p-4 border border-purple-200">
+            <div class="space-y-2 text-sm text-slate-700">
+              <div class="flex items-center gap-2">
+                <span class="bg-purple-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                <span><strong>Participación:</strong> nula → constante</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="bg-purple-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                <span><strong>Colaboración:</strong> poco coopera → ayuda activa</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+            <div class="space-y-2 text-sm text-slate-700">
+              <div class="flex items-center gap-2">
+                <span class="bg-indigo-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                <span><strong>Producto:</strong> incompleto → claro y aplicable</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="bg-indigo-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                <span><strong>Actitud:</strong> apático → entusiasta</span>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </article>
+    </div>
+  </section>
 
-    </article>
-  </div>
-</main>
+  <!-- DEMOSTRACIÓN DEL PRODUCTO O SERVICIO -->
+  <section aria-labelledby="demo-title" class="rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 p-8 shadow-xl border-2 border-emerald-300">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-4xl">🎬</span>
+      <div>
+        <h4 id="demo-title" class="text-2xl font-bold text-emerald-900">Demostración del producto o servicio</h4>
+        <p class="text-emerald-700 font-medium">"Prueba de vida" de lo aprendido. Simple, rápido y mostrable.</p>
+      </div>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 mt-6">
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-t-4 border-emerald-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-emerald-100 p-2 rounded-lg text-2xl">⏱️</span>
+          <h5 class="font-bold text-lg text-emerald-900">Formato sugerido (3–5 min)</h5>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3 bg-emerald-50 p-3 rounded-xl">
+            <span class="text-emerald-600 font-bold">1.</span>
+            <p class="text-sm text-slate-700"><strong>Contexto:</strong> el problema en 1 frase.</p>
+          </div>
+          <div class="flex items-start gap-3 bg-emerald-50 p-3 rounded-xl">
+            <span class="text-emerald-600 font-bold">2.</span>
+            <p class="text-sm text-slate-700"><strong>Qué hicimos:</strong> reto/actividad aplicada.</p>
+          </div>
+          <div class="flex items-start gap-3 bg-emerald-50 p-3 rounded-xl">
+            <span class="text-emerald-600 font-bold">3.</span>
+            <p class="text-sm text-slate-700"><strong>Resultado:</strong> evidencia breve (foto, gráfica, cálculo).</p>
+          </div>
+          <div class="flex items-start gap-3 bg-emerald-50 p-3 rounded-xl">
+            <span class="text-emerald-600 font-bold">4.</span>
+            <p class="text-sm text-slate-700"><strong>Aprendizaje clave</strong> en una línea.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-t-4 border-teal-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-teal-100 p-2 rounded-lg text-2xl">✅</span>
+          <h5 class="font-bold text-lg text-teal-900">Checklist de calidad</h5>
+        </div>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 bg-teal-50 p-3 rounded-xl cursor-pointer hover:bg-teal-100 transition">
+            <input type="checkbox" class="w-5 h-5 text-teal-600 rounded">
+            <span class="text-sm text-slate-700">Se entiende el <em class="text-teal-600 font-semibold">para qué</em>.</span>
+          </label>
+          <label class="flex items-center gap-3 bg-teal-50 p-3 rounded-xl cursor-pointer hover:bg-teal-100 transition">
+            <input type="checkbox" class="w-5 h-5 text-teal-600 rounded">
+            <span class="text-sm text-slate-700">Dato/evidencia real (no "porque sí").</span>
+          </label>
+          <label class="flex items-center gap-3 bg-teal-50 p-3 rounded-xl cursor-pointer hover:bg-teal-100 transition">
+            <input type="checkbox" class="w-5 h-5 text-teal-600 rounded">
+            <span class="text-sm text-slate-700">Tiempo respetado, voz clara, turnos.</span>
+          </label>
+          <label class="flex items-center gap-3 bg-teal-50 p-3 rounded-xl cursor-pointer hover:bg-teal-100 transition">
+            <input type="checkbox" class="w-5 h-5 text-teal-600 rounded">
+            <span class="text-sm text-slate-700">Diapositiva/afiche limpio y legible.</span>
+          </label>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- MODELO DE NEGOCIOS LEAN CANVAS -->
+  <section aria-labelledby="lean-title" class="rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 p-8 shadow-xl border-2 border-orange-300">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-4xl">📋</span>
+      <div>
+        <h4 id="lean-title" class="text-2xl font-bold text-orange-900">Modelo de negocios Lean Canvas</h4>
+        <p class="text-orange-700 font-medium">Versión escolar para estructurar tu iniciativa motivadora.</p>
+      </div>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-rose-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">💎</span>
+          <h5 class="font-bold text-slate-900">Propuesta de valor</h5>
+        </div>
+        <p class="text-sm text-slate-600">¿Qué valor nuevo entregas? (diversión con sentido, retos breves).</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-pink-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">👥</span>
+          <h5 class="font-bold text-slate-900">Segmento de clientes</h5>
+        </div>
+        <p class="text-sm text-slate-600">¿Para quién? (grado, sección, necesidades).</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-red-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">⚠️</span>
+          <h5 class="font-bold text-slate-900">Problemas</h5>
+        </div>
+        <p class="text-sm text-slate-600">Dolores principales que atacas (aburrimiento, poca utilidad percibida).</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-amber-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">🔧</span>
+          <h5 class="font-bold text-slate-900">Solución</h5>
+        </div>
+        <p class="text-sm text-slate-600">Estrategias elegidas (gamificación, proyecto breve).</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-yellow-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">📡</span>
+          <h5 class="font-bold text-slate-900">Canales</h5>
+        </div>
+        <p class="text-sm text-slate-600">Aula, cartelera, WhatsApp para familias.</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-lime-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">💰</span>
+          <h5 class="font-bold text-slate-900">Flujo de ingresos</h5>
+        </div>
+        <p class="text-sm text-slate-600">En escuela ≈ "reconocimientos", puntos, certificaciones internas.</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-green-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">💵</span>
+          <h5 class="font-bold text-slate-900">Estructura de costos</h5>
+        </div>
+        <p class="text-sm text-slate-600">Materiales, impresiones, tiempo de coordinación.</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-cyan-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">📈</span>
+          <h5 class="font-bold text-slate-900">Métricas</h5>
+        </div>
+        <p class="text-sm text-slate-600">Participación, promedio, ausencias, satisfacción (≥4/5).</p>
+      </div>
+      
+      <div class="rounded-2xl bg-white shadow-md hover:shadow-xl transition-all p-5 border-b-4 border-blue-400">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">⭐</span>
+          <h5 class="font-bold text-slate-900">Ventaja especial</h5>
+        </div>
+        <p class="text-sm text-slate-600">Aprendizaje significativo con contexto local y bajo costo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE EJECUCIÓN -->
+  <section aria-labelledby="exec-title" class="rounded-3xl bg-gradient-to-br from-indigo-50 to-purple-50 p-8 shadow-xl border-2 border-indigo-300">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-4xl">🚀</span>
+      <div>
+        <h4 id="exec-title" class="text-2xl font-bold text-indigo-900">Fase ejecución</h4>
+        <p class="text-indigo-700 font-medium">Aplicamos, comunicamos y celebramos. Sí, con estilo.</p>
+      </div>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 mt-6">
+      <!-- Logotipo del producto -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-t-4 border-amber-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-amber-100 p-2 rounded-lg text-2xl">🎨</span>
+          <h5 class="font-bold text-lg text-amber-900">Logotipo del producto</h5>
+        </div>
+        <p class="text-sm text-amber-800 mb-4">Nombre breve + ícono simple. Colores legibles.</p>
+
+        <figure class="mb-4">
+          <div class="relative w-full pt-[100%] rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 shadow-inner">
+            <img
+              src="./image/logo.png"
+              alt="Logo del proyecto"
+              class="absolute inset-0 h-full w-full object-contain p-6"
+            />
+          </div>
+          <figcaption class="text-xs text-amber-700 mt-3 bg-amber-50 p-2 rounded-lg text-center">
+            📦 PNG o SVG, fondo transparente, formato cuadrado (1:1)
+          </figcaption>
+        </figure>
+
+        <div class="bg-amber-50 rounded-xl p-4 border border-amber-200">
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500">●</span>
+              <span>Versiones clara/oscura si es posible.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-500">●</span>
+              <span>Úsalo en portada, cartelera y firmas.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Afiche del producto -->
+      <article class="rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border-t-4 border-indigo-400">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-indigo-100 p-2 rounded-lg text-2xl">📄</span>
+          <h5 class="font-bold text-lg text-indigo-900">Afiche del producto</h5>
+        </div>
+        <p class="text-sm text-indigo-800 mb-4">Una hoja A4 que cuente la historia sin aburrir.</p>
+
+        <figure class="mb-4">
+          <div class="relative w-full pt-[141%] rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 shadow-inner">
+            <img
+              src="./image/afiche.png"
+              alt="Afiche del proyecto en formato A4 vertical"
+              class="absolute inset-0 h-full w-full object-contain p-4"
+            />
+          </div>
+          <figcaption class="text-xs text-indigo-700 mt-3 bg-indigo-50 p-2 rounded-lg text-center">
+            📐 A4 vertical (≈ 210×297 mm). Deja márgenes y texto legible
+          </figcaption>
+        </figure>
+
+        <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+          <ul class="text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-500">●</span>
+              <span>Título + logo + eslogan.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-500">●</span>
+              <span>Problema → solución en 1 línea.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-500">●</span>
+              <span>2–3 evidencias (foto, cálculo, gráfico).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-indigo-500">●</span>
+              <span>QR opcional con más info.</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <!-- Checklist de seguimiento -->
+    <div class="mt-6 rounded-2xl bg-white shadow-lg p-6 border-l-4 border-violet-400">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-3xl">📝</span>
+        <h6 class="font-bold text-lg text-slate-900">Seguimiento semanal (rápido y sin dolor)</h6>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="bg-violet-50 rounded-xl p-4 border border-violet-200">
+          <div class="flex items-start gap-3">
+            <span class="bg-violet-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</span>
+            <p class="text-sm text-slate-700">Reto de 10' aplicado en cada clase.</p>
+          </div>
+        </div>
+        <div class="bg-violet-50 rounded-xl p-4 border border-violet-200">
+          <div class="flex items-start gap-3">
+            <span class="bg-violet-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</span>
+            <p class="text-sm text-slate-700">Ticket de salida guardado (evidencia mínima).</p>
+          </div>
+        </div>
+        <div class="bg-violet-50 rounded-xl p-4 border border-violet-200">
+          <div class="flex items-start gap-3">
+            <span class="bg-violet-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</span>
+            <p class="text-sm text-slate-700">Registro de participación por lista (✔️/—).</p>
+          </div>
+        </div>
+        <div class="bg-violet-50 rounded-xl p-4 border border-violet-200">
+          <div class="flex items-start gap-3">
+            <span class="bg-violet-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</span>
+            <p class="text-sm text-slate-700">1 mensaje a familias con "logro de la semana".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Conclusión -->
+        <section id="conclusion" class="reveal rounded-2xl bg-white p-6 sm:p-8 ring-1 ring-slate-200 shadow-card">
+          <h3 class="text-xl font-bold tracking-tight text-slate-900 mb-3">Conclusión</h3>
+          <p class="text-slate-600">
+            La baja motivación en clases no es un problema sin solución. Con la participación conjunta de docentes,
+            estudiantes, familias e instituciones, es posible transformar el aprendizaje en una experiencia
+            significativa y motivadora.
+          </p>
+          <figure class="mt-4">
+            <img decoding="async" loading="lazy" src="./image/CONCLUSION.png" alt="Manifestaciones de la desmotivación"
+              class="w-full max-w-full h-auto rounded-xl ring-1 ring-slate-200 shadow" />
+          </figure>
+        </section>
+
+        <!-- Autoras -->
+        <section id="autores"
+          class="reveal rounded-2xl bg-gradient-to-r from-brand-700 to-brand-600 p-6 text-white shadow-card">
+          <div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div>
+              <h3 class="text-lg font-semibold tracking-tight">Autoras</h3>
+              <div class="flex flex-wrap gap-5">
+                <div class="flex items-center gap-3 border-b border-slate-200/30 pt-3">
+                  <div>
+                    <p class="font-medium text-white">Damaris Nicol Vásquez Carlos</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 border-b border-slate-200/30 pt-3">
+                  <div>
+                    <p class="font-medium text-white">Mayra Rubí Ruiz Garrido</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
 
 
   <!-- Footer -->
@@ -719,12 +1359,68 @@
   <script>
     document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('es-PE');
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ===== Slider de fases =====
+    (function () {
+      const root = document.getElementById('fasesSlider2');
+      if (!root) return;
+
+      const track = root.querySelector('[data-fases-track]');
+      const slides = Array.from(track.querySelectorAll('article'));
+      const dots = Array.from(root.querySelectorAll('[data-fase-dot]'));
+      const btnPrev = root.querySelector('[data-fase-prev]');
+      const btnNext = root.querySelector('[data-fase-next]');
+
+      let index = 0;
+
+      function setTransform() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+      }
+
+      function setDots() {
+        dots.forEach((d, k) => {
+          d.dataset.active = k === index ? "true" : "false";
+        });
+      }
+
+      function go(i) {
+        index = (i + slides.length) % slides.length;
+        setTransform();
+        setDots();
+      }
+
+      dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+      if (btnPrev) btnPrev.addEventListener('click', () => go(index - 1));
+      if (btnNext) btnNext.addEventListener('click', () => go(index + 1));
+
+      // Teclado
+      root.tabIndex = 0;
+      root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') go(index - 1);
+        if (e.key === 'ArrowRight') go(index + 1);
+      });
+
+      // Swipe táctil
+      let startX = 0, touching = false;
+      root.addEventListener('touchstart', (e) => {
+        touching = true;
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      root.addEventListener('touchend', (e) => {
+        if (!touching) return;
+        touching = false;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) { dx < 0 ? go(index + 1) : go(index - 1); }
+      });
+
+      go(0);
+    })();
+
     (function () {
       const toc = document.querySelector('nav.toc');
       if (!toc) return;
 
       const links = Array.from(toc.querySelectorAll('a'));
-      // Toma solo las secciones que existen y son únicas
       const sections = [];
       const seen = new Set();
       for (const a of links) {
@@ -741,22 +1437,19 @@
         links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
       };
 
-      // Cuando hago click en el TOC, activo de inmediato el link (además del scroll)
       links.forEach(a => {
         a.addEventListener('click', () => activateLink(a.getAttribute('href')));
       });
 
-      // Observador + fallback por scroll para secciones cortas (p. ej., #autores)
       let ticking = false;
       const onScroll = () => {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
-          const y = window.innerHeight * 0.33; // línea base de lectura (1/3 pantalla)
+          const y = window.innerHeight * 0.33;
           let current = sections[0]?.id ? `#${sections[0].id}` : '';
           for (const s of sections) {
             const r = s.getBoundingClientRect();
-            // se considera "activa" si su parte superior está por encima de la línea base
             if (r.top - 80 <= y) current = `#${s.id}`;
           }
           if (current) activateLink(current);
@@ -767,10 +1460,8 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
       window.addEventListener('hashchange', () => activateLink(location.hash));
-      // Primer cálculo
       onScroll();
 
-      // IntersectionObserver para suavidad (no dependemos solo de él)
       const io = new IntersectionObserver((entries) => {
         let bestId = null;
         let bestRatio = 0;
@@ -783,11 +1474,12 @@
         if (bestId) activateLink(bestId);
       }, {
         root: null,
-        rootMargin: '-40% 0px -50% 0px', // más permisivo al final
+        rootMargin: '-40% 0px -50% 0px',
         threshold: [0.1, 0.25, 0.5, 0.75]
       });
       sections.forEach(s => io.observe(s));
     })();
+
     (function () {
       const progressEl = document.getElementById('reading-progress');
       const bar = document.getElementById('progress-bar');
@@ -805,6 +1497,7 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     })();
+
     (function () {
       const revealEls = document.querySelectorAll('.reveal');
       const io = new IntersectionObserver((entries) => {
@@ -817,7 +1510,6 @@
       }, { threshold: 0.12 });
       revealEls.forEach(el => io.observe(el));
     })();
-    document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('es-PE');
 
     (function () {
       const root = document.getElementById('estrategiasSlider');
@@ -832,13 +1524,12 @@
 
       let index = 0;
 
-      // Autoplay con pausa sin reinicio
-      const DURATION = 7000; // ms
-      let t0 = 0;            // inicio del ciclo actual
-      let elapsed = 0;       // tiempo transcurrido del ciclo actual
+      const DURATION = 7000;
+      let t0 = 0;
+      let elapsed = 0;
       let remaining = DURATION;
-      let toId = null;       // timeout para pasar de slide
-      let rafId = null;      // requestAnimationFrame para barra
+      let toId = null;
+      let rafId = null;
 
       function setTransform() {
         track.style.transform = `translateX(${-index * 100}%)`;
@@ -856,13 +1547,12 @@
         index = (i + slides.length) % slides.length;
         setTransform();
         setDots();
-        resetCycle(); // al cambiar de slide manual/auto, reiniciamos el ciclo
+        resetCycle();
       }
 
       function next() { go(index + 1); }
       function prev() { go(index - 1); }
 
-      // ===== Ciclo autoplay =====
       function updateProgress() {
         const pct = Math.min(100, ((Date.now() - t0) / DURATION) * 100);
         if (progressEl) progressEl.style.width = pct + '%';
@@ -879,7 +1569,6 @@
         rafId = requestAnimationFrame(updateProgress);
       }
 
-      // Pausa sin reiniciar (hover/focus/touch)
       function pause() {
         if (!toId) return;
         elapsed = Date.now() - t0;
@@ -890,29 +1579,24 @@
 
       function resume() {
         if (toId) return;
-        // continua donde quedó
         t0 = Date.now() - elapsed;
         toId = setTimeout(next, remaining);
         rafId = requestAnimationFrame(updateProgress);
       }
 
-      // Eventos UI
       dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
       if (btnPrev) btnPrev.addEventListener('click', prev);
       if (btnNext) btnNext.addEventListener('click', next);
 
-      // Pausa por hover/focus (sin reiniciar)
       ['mouseenter', 'focusin'].forEach(ev => root.addEventListener(ev, pause));
       ['mouseleave', 'focusout'].forEach(ev => root.addEventListener(ev, resume));
 
-      // Teclado
       root.tabIndex = 0;
       root.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prev();
         if (e.key === 'ArrowRight') next();
       });
 
-      // Swipe táctil
       let startX = 0, touching = false;
       root.addEventListener('touchstart', (e) => { touching = true; startX = e.touches[0].clientX; pause(); }, { passive: true });
       root.addEventListener('touchend', (e) => {
@@ -922,18 +1606,29 @@
         resume();
       });
 
-      // Reduced motion: sin autoplay
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReduced) {
         go(0);
       } else {
-        go(0); // también arranca el ciclo
+        go(0);
       }
     })();
   </script>
 
 
+
+  <!-- Back to top -->
+  <button id="toTop"
+    class="fixed bottom-5 right-5 z-40 hidden rounded-full bg-brand-600 p-3 text-white shadow-lg ring-1 ring-white/20 hover:bg-brand-700 focus-ring"
+    aria-label="Volver arriba">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
 </body>
+
+
 
 
 </html>
